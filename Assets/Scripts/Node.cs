@@ -5,29 +5,37 @@ using UnityEngine;
 public class Node : MonoBehaviour
 {
     //all possible NodeData
-    [SerializeField] ScriptableObjectSpots[] nodeData;
-    Route routeInfo;
+    public SOCitiesProperties[] nodeData;
+    public List<int> nodeDataNumber = new List<int>();
 
-    //specifying the node Data
-    public ScriptableObjectSpots currentScriptableObject;
-
-    Renderer nodeRenderer;
+    Route routeData;
 
     // Specifying the Node data
+    public int currentNodeNumber;
+    public SOCitiesProperties currentNode;
+
     void Start()
     {
-        routeInfo = GetComponentInParent<Route>();
-        nodeRenderer = GetComponent<Renderer>();
+        routeData = GetComponentInParent<Route>();
 
-        for (int i = 0; i < routeInfo.childNodeList.Count; i++)
+        //creating private list of SO to node position   
+        for (int i = 0; i < nodeData.Length; i++)
         {
-            if(this.transform == routeInfo.childNodeList[i].transform)
+            nodeDataNumber.Add(nodeData[i].nodeNumber);
+        }
+        
+    }
+
+    //creating private list of SO to node position  
+    public void TileSpawn()
+    {
+        for (int i = 0; i < nodeDataNumber.Count; i++)
+        {
+            if (nodeDataNumber[i] == currentNodeNumber)
             {
-                currentScriptableObject = nodeData[i];
+                currentNode = nodeData[i];
             }
         }
-
-        nodeRenderer.material.color = currentScriptableObject.stopColor;
     }
 
     // Update is called once per frame

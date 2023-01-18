@@ -6,8 +6,8 @@ using UnityEngine;
 public class Route : MonoBehaviour
 {
     Transform[] childObjects;
+    Node[] childNode;
     public List<Transform> childNodeList = new List<Transform>();
-
 
     //just draws a line between the nodes and calls the FillNodes Method
     private void OnDrawGizmos()
@@ -32,15 +32,26 @@ public class Route : MonoBehaviour
     private void FillNodes()
     {
         childNodeList.Clear();
-
+        
         childObjects = GetComponentsInChildren<Transform>();
+        childNode = GetComponentsInChildren<Node>();
+
         foreach(Transform child in childObjects)
         {
             if (child != this.transform)
             {
-                childNodeList.Add(child);
-
+                childNodeList.Add(child);            
             }        
         }
+        for (int i = 0; i < childNode.Length; i++)
+        {
+            childNode[i].currentNodeNumber = i;
+            childNode[i].TileSpawn();
+        }
+    }
+
+    private void Start()
+    {
+        FillNodes();
     }
 }
