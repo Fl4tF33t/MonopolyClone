@@ -8,18 +8,18 @@ public class Route : MonoBehaviour
     Transform[] childObjects;
     Node[] childNode;
     public List<Transform> childNodeList = new List<Transform>();
+    public SOCitiesProperties[] soCitiesProperties;
 
     private void Start()
     {
-        FillNodes();
+        CreateChildrenNodeList();
+        SetEachNodeData();
     }
 
-    //just draws a line between the nodes and calls the FillNodes Method
+    //This is for the editor view, so that we can see what path the totem is taking, can be romed later
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-
-        //FillNodes();
 
         for (int i = 0; i < childNodeList.Count; i++)
         {
@@ -30,16 +30,13 @@ public class Route : MonoBehaviour
                 Gizmos.DrawLine(previousPos, currentPos);
             }
         }
-
     }
 
-    //adds the transform of each child object to a public childNodeList
-    private void FillNodes()
+    //adds the transform of each child object to a public childNodeList, this is done because GetComponentsInChildren add the parent to the array at index 0
+    private void CreateChildrenNodeList()
     {
-        childNodeList.Clear();
-        
+        childNodeList.Clear(); 
         childObjects = GetComponentsInChildren<Transform>();
-        childNode = GetComponentsInChildren<Node>();
 
         foreach(Transform child in childObjects)
         {
@@ -48,10 +45,17 @@ public class Route : MonoBehaviour
                 childNodeList.Add(child);            
             }        
         }
+        
+    }
+
+    //Referencing each node to have its own properties
+    private void SetEachNodeData()
+    {
+        childNode = GetComponentsInChildren<Node>();
         for (int i = 0; i < childNode.Length; i++)
         {
             childNode[i].currentNodeNumber = i;
-            childNode[i].TileSpawn();
+            childNode[i].SettingCurrentNode();
             childNode[i].SettingNodeData();
         }
     }

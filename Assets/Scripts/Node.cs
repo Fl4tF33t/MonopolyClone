@@ -4,46 +4,37 @@ using UnityEngine;
 
 public class Node : MonoBehaviour
 {
-    //all possible NodeData
-    public SOCitiesProperties[] nodeData;
-    public List<int> nodeDataNumber = new List<int>();
-
+    Route routeData;
     Renderer ren;
 
     // Specifying the Node data
     public int currentNodeNumber;
     public SOCitiesProperties currentNode;
-    public SOCitiesProperties testNode;
 
     void Start()
     {
-        //creating private list of SO to node position   
-        for (int i = 0; i < nodeData.Length; i++)
-        {
-            nodeDataNumber.Add(nodeData[i].nodeNumber);
-        }
+        routeData = GetComponentInParent<Route>();
         ren = GetComponent<Renderer>();
     }
 
     //creating private list of SO to node position  
-    public void TileSpawn()
+    public void SettingCurrentNode()
     {
-        for (int i = 0; i < nodeDataNumber.Count; i++)
+        SOCitiesProperties[] possibleCityProperty = routeData.soCitiesProperties;
+
+        for (int i = 0; i < possibleCityProperty.Length; i++)
         {
-            if (nodeDataNumber[i] == currentNodeNumber)
+            if (currentNodeNumber == possibleCityProperty[i].nodeNumber)
             {
-                currentNode = nodeData[i];
+                currentNode = possibleCityProperty[i];
+                break;
             }
         }
     }
 
     public void SettingNodeData()
     {
-        if (currentNode == null)
-        {
-            ren.material.color = testNode.nodeColor;
-        }
-        else
+        if (currentNode != null)
         {
             ren.material.color = currentNode.nodeColor;
         }
