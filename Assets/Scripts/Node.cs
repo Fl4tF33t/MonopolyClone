@@ -9,7 +9,8 @@ public class Node : MonoBehaviour
 
     // Specifying the Node data
     public int currentNodeNumber;
-    public SOCitiesProperties currentNode;
+
+    public SONodes currentNode;
 
     void Start()
     {
@@ -20,14 +21,12 @@ public class Node : MonoBehaviour
     //creating private list of SO to node position  
     public void SettingCurrentNode()
     {
-        SOCitiesProperties[] possibleCityProperty = routeData.soCitiesProperties;
-
-        for (int i = 0; i < possibleCityProperty.Length; i++)
+        for (int i = 0; i < routeData.soNodes.Length; i++)
         {
-            if (currentNodeNumber == possibleCityProperty[i].nodeNumber)
+            if (currentNodeNumber == routeData.soNodes[i].nodeNumber)
             {
-                currentNode = possibleCityProperty[i];
-                break;
+                currentNode = routeData.soNodes[i];
+                return;
             }
         }
     }
@@ -38,6 +37,7 @@ public class Node : MonoBehaviour
         {
             ren.material.color = currentNode.nodeColor;
         }
+        
     }
 
     // Update is called once per frame

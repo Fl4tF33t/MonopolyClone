@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366757, g: 0.48427194, b: 0.5645252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1063,13 +1063,13 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -1102,7 +1102,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -1120,14 +1120,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 30, y: 3, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &779631960
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3595,7 +3595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   childNodeList: []
-  soCitiesProperties:
+  soNodes:
   - {fileID: 11400000, guid: fb65c854ca4f14647a39286ef8952380, type: 2}
   - {fileID: 11400000, guid: e7717f21283343143ae5f2e1d2dee869, type: 2}
   - {fileID: 11400000, guid: 7dbfa99a47bfffd43ab64841f3e47f7a, type: 2}
@@ -3618,6 +3618,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 208d6d0ed2ef6c447a4f7d152ea97556, type: 2}
   - {fileID: 11400000, guid: cd421c0de8389d044adf10fcba8849f0, type: 2}
   - {fileID: 11400000, guid: 01073102007e3144b83b857bbbf1542b, type: 2}
+  - {fileID: 11400000, guid: 90586d855002dbe40ab8450343b5b2d8, type: 2}
+  - {fileID: 11400000, guid: da0e51e438cab714893c25831451931c, type: 2}
+  - {fileID: 11400000, guid: 0375f1c928b562d4c8b0c6fe7d796489, type: 2}
+  - {fileID: 11400000, guid: 35228dc8f484269459fb213c6f1c47e9, type: 2}
+  - {fileID: 11400000, guid: ac778a7cb6c565d4f98c80f1176ca414, type: 2}
+  - {fileID: 11400000, guid: 29793812f2baa504b8d091b33ed04787, type: 2}
+  - {fileID: 11400000, guid: 568dec2c472be79499ebee2098579f1d, type: 2}
+  - {fileID: 11400000, guid: 1a28cfa8107be2f4db555771f2e66f2e, type: 2}
+  - {fileID: 11400000, guid: 63b42a2722cec5449ae1d68e6effc32d, type: 2}
+  - {fileID: 11400000, guid: b59791053284a3f4b92b5dd3128d45fb, type: 2}
 --- !u!1 &1967520073
 GameObject:
   m_ObjectHideFlags: 0

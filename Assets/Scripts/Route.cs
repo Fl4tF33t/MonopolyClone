@@ -8,8 +8,7 @@ public class Route : MonoBehaviour
     Transform[] childObjects;
     Node[] childNode;
     public List<Transform> childNodeList = new List<Transform>();
-    public SOCitiesProperties[] soCitiesProperties;
-
+    public SONodes[] soNodes;
     private void Start()
     {
         CreateChildrenNodeList();
