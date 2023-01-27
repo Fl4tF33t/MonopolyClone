@@ -5,11 +5,12 @@ using UnityEngine;
 public class Totem : MonoBehaviour
 {
     public Route currentRoute;
-    int routePosition;
+    public int routePosition;
 
     public int steps;
     public float movementSpeed;
     bool isMoving;
+
 
     // Update is called once per frame
     void Update()
@@ -43,10 +44,11 @@ public class Totem : MonoBehaviour
             }
             yield return new WaitForSeconds(0.2f);
             steps--;
+            
         }
 
         isMoving = false;
-
+        
     }
 
     bool MoveToNextNode(Vector3 goal)

@@ -8,22 +8,21 @@ public class Node : MonoBehaviour
     public SOCitiesProperties[] nodeData;
     public List<int> nodeDataNumber = new List<int>();
 
-    Route routeData;
+    Renderer ren;
 
     // Specifying the Node data
     public int currentNodeNumber;
     public SOCitiesProperties currentNode;
+    public SOCitiesProperties testNode;
 
     void Start()
     {
-        routeData = GetComponentInParent<Route>();
-
         //creating private list of SO to node position   
         for (int i = 0; i < nodeData.Length; i++)
         {
             nodeDataNumber.Add(nodeData[i].nodeNumber);
         }
-        
+        ren = GetComponent<Renderer>();
     }
 
     //creating private list of SO to node position  
@@ -35,6 +34,18 @@ public class Node : MonoBehaviour
             {
                 currentNode = nodeData[i];
             }
+        }
+    }
+
+    public void SettingNodeData()
+    {
+        if (currentNode == null)
+        {
+            ren.material.color = testNode.nodeColor;
+        }
+        else
+        {
+            ren.material.color = currentNode.nodeColor;
         }
     }
 

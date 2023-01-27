@@ -9,12 +9,17 @@ public class Route : MonoBehaviour
     Node[] childNode;
     public List<Transform> childNodeList = new List<Transform>();
 
+    private void Start()
+    {
+        FillNodes();
+    }
+
     //just draws a line between the nodes and calls the FillNodes Method
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
 
-        FillNodes();
+        //FillNodes();
 
         for (int i = 0; i < childNodeList.Count; i++)
         {
@@ -47,11 +52,8 @@ public class Route : MonoBehaviour
         {
             childNode[i].currentNodeNumber = i;
             childNode[i].TileSpawn();
+            childNode[i].SettingNodeData();
         }
     }
 
-    private void Start()
-    {
-        FillNodes();
-    }
 }
