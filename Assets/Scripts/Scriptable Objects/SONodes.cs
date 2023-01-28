@@ -8,7 +8,7 @@ public class SONodes : ScriptableObject
     public Color nodeColor;
     
     public int nodePrice;
-    public enum Types { CitiesProperties, Corner, Utilities, Airports, CommunityCards, ChanceCards};
+    public enum Types { CitiesProperties, Corner, Utilities, Airports, CommunityCards, ChanceCards, Taxes};
     public Types types;
 }
 
