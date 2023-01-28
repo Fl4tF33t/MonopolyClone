@@ -10,7 +10,7 @@ public class Totem : NetworkBehaviour
 
     public int steps;
     public float movementSpeed;
-    bool isMoving;
+    public NetworkVariable<bool> isMoving = new NetworkVariable<bool>();
 
     // Start is called before the first frame update
     void Start()
@@ -21,8 +21,15 @@ public class Totem : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //We don't want/can't other except the owner to access ServerRpc
+        if (!IsOwner)
+        {
+            return;
+        }
+
         //basic imput system
-        if (Input.GetKeyDown(KeyCode.Space) && !isMoving)
+        if (Input.GetKeyDown(KeyCode.Space) && !isMoving.Value == true)
         {
             steps = Random.Range(1, 7);
             StartCoroutine(Move());
@@ -32,11 +39,12 @@ public class Totem : NetworkBehaviour
     //Movement of the totem
     IEnumerator Move()
     {
-        if (isMoving)
+        if (isMoving.Value == true)
         {
             yield break;
         }
-        isMoving = true;
+
+        IsMovingServerRpc();
 
         while(steps > 0)
         {
@@ -55,8 +63,20 @@ public class Totem : NetworkBehaviour
             
         }
 
-        isMoving = false;
-        
+        IsNotMovingServerRpc(); 
+    }
+
+    //NetworkVariable can not be change on client
+
+    [ServerRpc]
+    void IsMovingServerRpc()
+    {
+        isMoving.Value = true;
+    }
+    [ServerRpc]
+    void IsNotMovingServerRpc()
+    {
+        isMoving.Value = false;
     }
 
     //ServerRpc needs to be a void so it can not be done inside a IEnumerator
@@ -66,6 +86,7 @@ public class Totem : NetworkBehaviour
         transform.position = Vector3.MoveTowards(transform.position, goal, movementSpeed * Time.deltaTime);
     }
 
+    
     /*
     bool MoveToNextNode(Vector3 goal)
     {
