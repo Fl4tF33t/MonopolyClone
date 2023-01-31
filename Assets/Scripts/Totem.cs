@@ -8,6 +8,8 @@ public class Totem : NetworkBehaviour
     public Route currentRoute;
     public int routePosition;
 
+    PlayerController playerControllerInfo;
+
     public int steps;
     public float movementSpeed;
     public NetworkVariable<bool> isMoving = new NetworkVariable<bool>();
@@ -16,6 +18,7 @@ public class Totem : NetworkBehaviour
     void Start()
     {
         currentRoute = GameObject.Find("Route").GetComponent<Route>();
+        playerControllerInfo = GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -29,15 +32,15 @@ public class Totem : NetworkBehaviour
         }
 
         //basic imput system
-        if (Input.GetKeyDown(KeyCode.Space) && !isMoving.Value == true)
+       /* if (Input.GetKeyDown(KeyCode.Space) && !isMoving.Value == true)
         {
             steps = Random.Range(1, 7);
             StartCoroutine(Move());
-        }
+        }*/
     }
 
     //Movement of the totem
-    IEnumerator Move()
+    public IEnumerator Move()
     {
         if (isMoving.Value == true)
         {
@@ -63,7 +66,8 @@ public class Totem : NetworkBehaviour
             
         }
 
-        IsNotMovingServerRpc(); 
+        IsNotMovingServerRpc();
+        playerControllerInfo.EndOfTurn();
     }
 
     //NetworkVariable can not be change on client
