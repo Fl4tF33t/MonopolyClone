@@ -21,14 +21,14 @@ public class Node : MonoBehaviour
     //creating private list of SO to node position  
     public void SettingCurrentNode()
     {
-        for (int i = 0; i < routeData.soNodes.Length; i++)
+        /*for (int i = 0; i < routeData.soNodes.Length; i++)
         {
             if (currentNodeNumber == routeData.soNodes[i].nodeNumber)
             {
                 currentNode = routeData.soNodes[i];
                 return;
             }
-        }
+        }*/
     }
 
     public void SettingNodeData()
