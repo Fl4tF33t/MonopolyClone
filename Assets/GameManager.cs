@@ -7,6 +7,7 @@ using System;
 public class GameManager : NetworkBehaviour
 {
     NetworkManager networkManager;
+    public List<int> currentPlayers = new List<int>();
 
     private void Awake()
     {
@@ -17,13 +18,19 @@ public class GameManager : NetworkBehaviour
     {
         networkManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
         networkManager.OnClientConnectedCallback += ConnectedPlayers;
+        networkManager.OnClientDisconnectCallback += DisconnectedPlayers;       
     }
 
-    private void ConnectedPlayers(ulong obj)
+    
+    //tracking who is connected and disconnects
+    private void ConnectedPlayers(ulong player)
     {
-        Debug.Log(obj);
+        currentPlayers.Add(Convert.ToInt32(player));
     }
-
+    private void DisconnectedPlayers(ulong player)
+    {
+        currentPlayers.Remove(Convert.ToInt32(player));
+    }
     // Update is called once per frame
     void Update()
     {
