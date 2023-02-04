@@ -12,6 +12,7 @@ public class Totem : NetworkBehaviour
     int steps;
     public float movementSpeed;
     public NetworkVariable<bool> isMoving = new NetworkVariable<bool>();
+    public event Action OnEndOfMove;
 
     PlayerController playerController;
 
@@ -55,6 +56,7 @@ public class Totem : NetworkBehaviour
             
         }
         IsNotMovingServerRpc();
+        OnEndOfMove?.Invoke();
     }
 
     //NetworkVariable can not be change on client

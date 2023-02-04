@@ -10,5 +10,7 @@ public class SONodes : ScriptableObject
     public int nodePrice;
     public enum Types { CitiesProperties, Corner, Utilities, Airports, CommunityCards, ChanceCards, Taxes};
     public Types types;
+
+    public bool isOwned = false;
 }
 
