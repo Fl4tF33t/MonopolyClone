@@ -2,17 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class Route : MonoBehaviour
+public class Route : NetworkBehaviour
 {
     Transform[] childObjects;
     Node[] childNode;
     public List<Transform> childNodeList = new List<Transform>();
-    public SONodes[] soNodes;
+    public NetworkVariable<SONodes[]> soNodes = new NetworkVariable<SONodes[]>();
     private void Start()
     {
         CreateChildrenNodeList();
-        SetEachNodeData();
+        //SetEachNodeData;
+        NetworkManager.Singleton.OnServerStarted += SetEachNodeData;
     }
 
     //This is for the editor view, so that we can see what path the totem is taking, can be romed later
