@@ -2125,6 +2125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1463687137}
   - component: {fileID: 1463687136}
+  - component: {fileID: 1463687138}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2144,7 +2145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d63283296cd8c45b1faaaeb640cb29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playersList: []
 --- !u!4 &1463687137
 Transform:
   m_ObjectHideFlags: 0
@@ -2160,6 +2160,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1463687138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463687135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 1049699267
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!4 &1469801315 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2840772564288701159, guid: 56167218366302a47a5c41e4f6b089bd, type: 3}
@@ -2919,9 +2935,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1778432278}
-  - component: {fileID: 1778432277}
-  - component: {fileID: 1778432276}
   - component: {fileID: 1778432279}
+  - component: {fileID: 1778432276}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -2956,45 +2971,6 @@ MonoBehaviour:
     PacketDelayMS: 0
     PacketJitterMS: 0
     PacketDropRate: 0
---- !u!114 &1778432277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1778432275}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 593a2fe42fa9d37498c96f9a383b6521, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RunInBackground: 1
-  LogLevel: 0
-  NetworkConfig:
-    ProtocolVersion: 0
-    NetworkTransport: {fileID: 1778432276}
-    PlayerPrefab: {fileID: 8428149867556994472, guid: 2f45f2d56e6536441af0282a044eb49e, type: 3}
-    NetworkPrefabs:
-    - Override: 0
-      Prefab: {fileID: 834134067663857597, guid: 9e39892048b774e41a0cf60dda6b36ec, type: 3}
-      SourcePrefabToOverride: {fileID: 0}
-      SourceHashToOverride: 0
-      OverridingTargetPrefab: {fileID: 0}
-    TickRate: 30
-    ClientConnectionBufferTimeout: 10
-    ConnectionApproval: 0
-    ConnectionData: 
-    EnableTimeResync: 0
-    TimeResyncInterval: 30
-    EnsureNetworkVariableLengthSafety: 0
-    EnableSceneManagement: 1
-    ForceSamePrefabs: 1
-    RecycleNetworkIds: 1
-    NetworkIdRecycleDelay: 120
-    RpcHashSize: 0
-    LoadSceneTimeOut: 120
-    SpawnTimeout: 1
-    EnableNetworkLogs: 1
 --- !u!4 &1778432278
 Transform:
   m_ObjectHideFlags: 0
@@ -3019,9 +2995,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 1778432275}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc426b971074fe44a940972236f804c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 593a2fe42fa9d37498c96f9a383b6521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RunInBackground: 1
+  LogLevel: 1
+  NetworkConfig:
+    ProtocolVersion: 0
+    NetworkTransport: {fileID: 1778432276}
+    PlayerPrefab: {fileID: 8428149867556994472, guid: 2f45f2d56e6536441af0282a044eb49e, type: 3}
+    NetworkPrefabs:
+    - Override: 0
+      Prefab: {fileID: 8428149867556994472, guid: 2f45f2d56e6536441af0282a044eb49e, type: 3}
+      SourcePrefabToOverride: {fileID: 0}
+      SourceHashToOverride: 0
+      OverridingTargetPrefab: {fileID: 0}
+    TickRate: 30
+    ClientConnectionBufferTimeout: 10
+    ConnectionApproval: 0
+    ConnectionData: 
+    EnableTimeResync: 0
+    TimeResyncInterval: 30
+    EnsureNetworkVariableLengthSafety: 0
+    EnableSceneManagement: 1
+    ForceSamePrefabs: 1
+    RecycleNetworkIds: 1
+    NetworkIdRecycleDelay: 120
+    RpcHashSize: 0
+    LoadSceneTimeOut: 120
+    SpawnTimeout: 1
+    EnableNetworkLogs: 1
 --- !u!1001 &1797341914
 PrefabInstance:
   m_ObjectHideFlags: 0
