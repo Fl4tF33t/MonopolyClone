@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.Netcode;
 
-public class Node : NetworkBehaviour
+public class Node : MonoBehaviour
 {
     Route routeData;
     Renderer ren;

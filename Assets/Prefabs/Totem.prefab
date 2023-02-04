@@ -295,8 +295,6 @@ GameObject:
   - component: {fileID: 7393326211597338999}
   - component: {fileID: 8428149867556994473}
   - component: {fileID: 8428149867556994475}
-  - component: {fileID: -6012387699960772789}
-  - component: {fileID: -8461314963547359168}
   m_Layer: 0
   m_Name: Totem
   m_TagString: Untagged
@@ -363,8 +361,7 @@ MonoBehaviour:
   routePosition: 0
   steps: 0
   movementSpeed: 7
-  isMoving:
-    m_InternalValue: 0
+  isMoving: 0
 --- !u!114 &8428149867556994475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,27 +378,3 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &-6012387699960772789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8428149867556994472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69d0bc82bf7cc234d9b106907bf032f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-8461314963547359168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8428149867556994472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d4875eec957178429f0d83f271489fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
