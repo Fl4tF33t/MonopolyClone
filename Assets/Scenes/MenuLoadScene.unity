@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.43667555, g: 0.48427176, b: 0.5645241, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366757, g: 0.48427194, b: 0.5645252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3761,6 +3761,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1964847512}
   - component: {fileID: 1964847513}
+  - component: {fileID: 1964847514}
   m_Layer: 0
   m_Name: Route
   m_TagString: Untagged
@@ -3877,6 +3878,22 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fe6f2ab21211aee4bae73df87c0cffa6, type: 2}
   - {fileID: 11400000, guid: 5a392b7e24ac4414e9038c3b89f854f4, type: 2}
   - {fileID: 11400000, guid: f81b6543b89d490498a1e6132da7528a, type: 2}
+--- !u!114 &1964847514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964847511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 2015766951
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &1967520073
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,17 +2,35 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Route : MonoBehaviour
+using Unity.Netcode;
+public class Route : NetworkBehaviour
 {
+    struct Nodes : INetworkSerializable
+    {
+        public int nodeNumber;
+        public string nodeName;
+        public Color nodeColor;
+        public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+        {
+            serializer.SerializeValue(ref nodeNumber);
+            serializer.SerializeValue(ref nodeName);
+            serializer.SerializeValue(ref nodeColor);
+        }
+    }
+
+    
+    Nodes[] uniquNodes;
+    
     Transform[] childObjects;
     Node[] childNode;
     public List<Transform> childNodeList = new List<Transform>();
     public SONodes[] soNodes;
+
     private void Start()
     {
         CreateChildrenNodeList();
         SetEachNodeData();
+        uniquNodes[0] = new Nodes { nodeNumber = 0 };
     }
 
     //This is for the editor view, so that we can see what path the totem is taking, can be romed later
