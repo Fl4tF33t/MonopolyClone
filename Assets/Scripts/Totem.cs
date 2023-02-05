@@ -6,20 +6,24 @@ using System;
 
 public class Totem : NetworkBehaviour
 {
-    Route currentRoute;
-    public int routePosition;
+    //This script is used to ONLY control the rpc movement of the visual totem
+
+    Route route;
+    PlayerController playerController;
 
     int steps;
-    public float movementSpeed;
-    public NetworkVariable<bool> isMoving = new NetworkVariable<bool>();
-    public event Action OnEndOfMove;
 
-    PlayerController playerController;
+    public int routePosition;
+    public float movementSpeed;
+
+    public NetworkVariable<bool> isMoving = new NetworkVariable<bool>();
+
+    public event Action OnEndOfMove;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentRoute = GameObject.Find("Route").GetComponent<Route>();
+        route = GameObject.Find("Route").GetComponent<Route>();
         playerController = GetComponent<PlayerController>();
         playerController.OnDiceRoll += TotemMovement;
     }
@@ -42,9 +46,9 @@ public class Totem : NetworkBehaviour
         while(steps > 0)
         {
             routePosition++;
-            routePosition %= currentRoute.childNodeList.Count;
+            routePosition %= route.childNodeList.Count;
 
-            Vector3 nextPos = currentRoute.childNodeList[routePosition].position;
+            Vector3 nextPos = route.childNodeList[routePosition].position;
             while (transform.position != nextPos)
             {
                 MoveServerRpc(nextPos);

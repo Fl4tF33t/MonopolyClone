@@ -5,22 +5,22 @@ using UnityEngine;
 using Unity.Netcode;
 public class Route : NetworkBehaviour
 {
-    CSVReader csvData;
+    //this script is used to set the route path of the nodes, here we can call the nodes to set their data
+
+    CSVReader csvReader;
     Transform[] childObjects;
-    Node[] childNode;
+
     public List<Transform> childNodeList = new List<Transform>();
-    //public SONodes[] soNodes;
     
 
     private void Start()
     {
-        csvData = GetComponent<CSVReader>();
-        CreateChildrenNodeList();
-        NetworkManager.Singleton.OnServerStarted += SetEachNodeData;
-        NetworkManager.Singleton.OnClientConnectedCallback += Redo; 
+        //calls the function once all the data has been processed and extracted
+        csvReader = GetComponent<CSVReader>();
+        csvReader.OnNodeDataFinishBuild += CreateChildrenNodeListData;
     }
 
-    //This is for the editor view, so that we can see what path the totem is taking, can be romed later
+    //This is for the editor view, so that we can see what path the totem is taking, can be remomed later
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
@@ -37,33 +37,26 @@ public class Route : NetworkBehaviour
     }
 
     //adds the transform of each child object to a public childNodeList, this is done because GetComponentsInChildren add the parent to the array at index 0
-    private void CreateChildrenNodeList()
+    private void CreateChildrenNodeListData()
     {
+        //Create a public list of all the children
         childNodeList.Clear(); 
         childObjects = GetComponentsInChildren<Transform>();
+        int nodeNumber = 0;
 
+        //sets the nodedata for each child
         foreach(Transform child in childObjects)
         {
             if (child != this.transform)
             {
-                childNodeList.Add(child);            
+                childNodeList.Add(child);
+
+                Node node = child.GetComponent<Node>();
+                node.currentNodeNumber = nodeNumber;
+                node.SettingCurrentNode();
+                node.SettingNodeData();
+                nodeNumber++;
             }        
         }
-        
     }
-    void Redo(ulong u) { SetEachNodeData(); }
-
-
-    //Referencing each node to have its own properties
-    public void SetEachNodeData()
-    {
-        childNode = GetComponentsInChildren<Node>();
-        for (int i = 0; i < childNode.Length; i++)
-        {
-            childNode[i].currentNodeNumber = i;
-            childNode[i].SettingCurrentNode();
-            childNode[i].SettingNodeData();
-        }
-    }
-
 }

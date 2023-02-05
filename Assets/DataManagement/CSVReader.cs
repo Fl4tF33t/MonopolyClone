@@ -4,7 +4,10 @@ using System;
 
 public class CSVReader : MonoBehaviour
 {
+    //This script is used to extract data from the CSVfile set it into usable arrays
+
 	public TextAsset csvFile;
+    public event Action OnNodeDataFinishBuild;
 
     [System.Serializable]
     public class NodeData 
@@ -47,6 +50,7 @@ public class CSVReader : MonoBehaviour
             myNodeDattaArray.nodeDataArray[i].nodeColor = (data[columns * (i + 1) + 6]);
             myNodeDattaArray.nodeDataArray[i].nodeType = int.Parse(data[columns * (i + 1) + 4]);
         }
+        OnNodeDataFinishBuild?.Invoke();
     }
 
     private void Start()

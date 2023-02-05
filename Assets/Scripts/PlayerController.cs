@@ -29,7 +29,7 @@ public class PlayerController : NetworkBehaviour
         route = GameObject.Find("Route").GetComponent<Route>();
         networkObject = GetComponent<NetworkObject>();
         UIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
-        totem.OnEndOfMove += TestServerRpc;
+        //totem.OnEndOfMove += TestServerRpc;
 
     }
 
@@ -69,10 +69,10 @@ public class PlayerController : NetworkBehaviour
         }
     }*/
 
-    [ServerRpc]
+    /*[ServerRpc]
     void TestServerRpc()
     {
-        currentNode = route.childNodeList[totem.routePosition].gameObject.GetComponent<Node>().nodeData;
+        currentNode = route.childNodeList[totem.routePosition].gameObject.GetComponent<Node>().currentNodeData;
         UIManager.testText.text = currentNode.nodeColor;
-    }
+    }*/
 }

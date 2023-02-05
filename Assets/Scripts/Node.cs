@@ -5,9 +5,9 @@ using Unity.Netcode;
 
 public class Node : NetworkBehaviour
 {
-    Route routeData;
     CSVReader csvReader;
     Renderer ren;
+
     Color color;
     public NetworkVariable<Color> networkColor = new NetworkVariable<Color>();
 
@@ -15,30 +15,29 @@ public class Node : NetworkBehaviour
     public int currentNodeNumber;
 
     //public SONodes currentNode;
-    public CSVReader.NodeData nodeData;
+    public NetworkVariable<CSVReader.NodeData> currentNodeData;
 
     void Start()
     {
-        routeData = GetComponentInParent<Route>();
         csvReader = GetComponentInParent<CSVReader>();
         ren = GetComponent<Renderer>();
     }
 
     //creating private list of SO to node position  
+    
     public void SettingCurrentNode()
     {
-        for (int i = 0; i < csvReader.myNodeDattaArray.nodeDataArray.Length; i++)
+        foreach (CSVReader.NodeData nodeData in csvReader.myNodeDattaArray.nodeDataArray)
         {
-            if (currentNodeNumber == csvReader.myNodeDattaArray.nodeDataArray[i].nodeNumber)
+            if(nodeData.nodeNumber == currentNodeNumber)
             {
-                nodeData = csvReader.myNodeDattaArray.nodeDataArray[i];
+                currentNodeData.Value = nodeData;
             }
         }
     }
-
     public void SettingNodeData()
     {
-        if (ColorUtility.TryParseHtmlString(nodeData.nodeColor, out color))
+        if (ColorUtility.TryParseHtmlString(currentNodeData.Value.nodeColor, out color))
         {
              
             ren.material.color = color;
