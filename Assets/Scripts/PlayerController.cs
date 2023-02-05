@@ -25,7 +25,7 @@ public class PlayerController : NetworkBehaviour
     void Start()
     {
         totem = GetComponent<Totem>();
-        //totem.OnEndOfMove += EndOfMove;
+        totem.OnEndOfMove += EndOfMove;
         route = GameObject.Find("Route").GetComponent<Route>();
         networkObject = GetComponent<NetworkObject>();
         UIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
@@ -54,20 +54,19 @@ public class PlayerController : NetworkBehaviour
     }
 
     //option's after move
-    /*void EndOfMove()
+    void EndOfMove()
     {
-        currentNode = route.childNodeList[totem.routePosition].gameObject.GetComponent<Node>();
-        SONodes currentSONode = currentNode.currentNode;
-        if(currentSONode.isOwned == false)
+        currentNode = route.childNodeList[totem.routePosition].gameObject.GetComponent<Node>().currentNodeData.Value;
+        if(currentNode.isOwned == false)
         {
             UIManager.buySellButtonText.text = "Buy";
         }
         else
         {
             UIManager.buySellButtonText.text = "Sell";
-
         }
-    }*/
+        UIManager.testText.text = "You are standing on " + currentNode.nodeName;
+    }
 
     /*[ServerRpc]
     void TestServerRpc()

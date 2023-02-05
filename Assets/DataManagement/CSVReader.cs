@@ -7,6 +7,7 @@ public class CSVReader : MonoBehaviour
     //This script is used to extract data from the CSVfile set it into usable arrays
 
 	public TextAsset csvFile;
+    public enum NodeType {Corner, City, Community, Taxes, Airport, Chance, Utility}
     public event Action OnNodeDataFinishBuild;
 
     [System.Serializable]
@@ -19,7 +20,7 @@ public class CSVReader : MonoBehaviour
         public int nodeSellPrice;
         public bool isOwned;
         public string nodeColor;
-        public int nodeType;
+        public NodeType nodeType;
     }
 
     [System.Serializable]
@@ -32,7 +33,7 @@ public class CSVReader : MonoBehaviour
 
     void ReadCSV()
     {
-        string[] data = csvFile.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
+        string[] data = csvFile.text.Split(new string[] { ";", "\n" }, StringSplitOptions.None);
         int columns = 8;
 
         int tableSize = data.Length / columns - 1;
@@ -48,7 +49,7 @@ public class CSVReader : MonoBehaviour
             myNodeDattaArray.nodeDataArray[i].nodeSellPrice = int.Parse(data[columns * (i + 1) + 4]);
             myNodeDattaArray.nodeDataArray[i].isOwned = bool.Parse(data[columns * (i + 1) + 5]);
             myNodeDattaArray.nodeDataArray[i].nodeColor = (data[columns * (i + 1) + 6]);
-            myNodeDattaArray.nodeDataArray[i].nodeType = int.Parse(data[columns * (i + 1) + 4]);
+            myNodeDattaArray.nodeDataArray[i].nodeType = (NodeType)Enum.Parse(typeof(NodeType), data[columns * (i + 1) + 7]);
         }
         OnNodeDataFinishBuild?.Invoke();
     }

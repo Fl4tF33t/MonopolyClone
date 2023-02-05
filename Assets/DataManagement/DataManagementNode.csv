@@ -1,0 +1,41 @@
+Node Number;Node Name;Is Purchasable;Node Buy Price;Node Sell Price;Is Owned;NodeColor;Node Type
+0;Go;FALSE;0;0;TRUE;lime;Corner
+1;Rauma;TRUE;3;2;FALSE;lightblue;City
+2;Community;FALSE;0;0;TRUE;fuchsia;Community
+3;Kokkola;TRUE;3;2;FALSE;lightblue;City
+4;Taxes;FALSE;0;0;TRUE;maroon;Taxes
+5;Helsinki Vantaa Airport ;TRUE;2;1;FALSE;olive;Airport
+6;Mikkeli;TRUE;4;3;FALSE;silver;City
+7;Chance;FALSE;0;0;TRUE;purple;Chance
+8;Hyvinkaa;TRUE;4;3;FALSE;silver;City
+9;Kouvola;TRUE;4;3;FALSE;silver;City
+10;Visiting Jail;FALSE;0;0;TRUE;lime;Corner
+11;Kotka;TRUE;5;4;FALSE;brown;City
+12;Helen Electricity;TRUE;1;1;FALSE;yellow;Utility
+13;Porvoo;TRUE;5;4;FALSE;brown;City
+14;Hameenlinna;TRUE;5;4;FALSE;brown;City
+15;Oulu Airport;TRUE;2;1;FALSE;olive;Airport
+16;Seinajoki;TRUE;6;5;FALSE;orange;City
+17;Community;FALSE;0;0;TRUE;fuchsia;Community
+18;Rovaniemi;TRUE;6;5;FALSE;orange;City
+19;Lappeenranta;TRUE;6;5;FALSE;orange;City
+20;Free Parking;FALSE;0;0;TRUE;lime;Corner
+21;Vaasa;TRUE;7;6;FALSE;darkblue;City
+22;Chance;FALSE;0;0;TRUE;purple;Chance
+23;Joensuu;TRUE;7;6;FALSE;darkblue;City
+24;Pori;TRUE;7;6;FALSE;darkblue;City
+25;Rovaniemi Airport;TRUE;2;1;FALSE;olive;Airport
+26;Kuopio;TRUE;8;7;FALSE;black;City
+27;Lahti;TRUE;8;7;FALSE;black;City
+28;Fortum Electricity;TRUE;1;1;FALSE;yellow;Utility
+29;Jyvaskyla;TRUE;8;7;FALSE;black;City
+30;Go To Jail;FALSE;0;0;TRUE;lime;Corner
+31;Ouluu;TRUE;9;8;FALSE;white;City
+32;Turku;TRUE;9;8;FALSE;white;City
+33;Community;FALSE;0;0;TRUE;fuchsia;Community
+34;Tampere;TRUE;9;8;FALSE;white;City
+35;Turku Airport;TRUE;2;1;FALSE;olive;Airport
+36;Chance;FALSE;0;0;TRUE;purple;Chance
+37;Espoo;TRUE;10;9;FALSE;cyan;City
+38;Taxes;FALSE;0;0;TRUE;maroon;Taxes
+39;Helsinki;TRUE;10;9;FALSE;cyan;City
