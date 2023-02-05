@@ -6,6 +6,8 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI buySellButtonText;
+    public TextMeshProUGUI testText;
+    public Node noded;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +23,6 @@ public class UIManager : MonoBehaviour
 
     public void BuySellButton()
     {
-
     }
 
 }

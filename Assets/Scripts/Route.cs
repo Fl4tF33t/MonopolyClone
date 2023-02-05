@@ -5,32 +5,19 @@ using UnityEngine;
 using Unity.Netcode;
 public class Route : NetworkBehaviour
 {
-    struct Nodes : INetworkSerializable
-    {
-        public int nodeNumber;
-        public string nodeName;
-        public Color nodeColor;
-        public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
-        {
-            serializer.SerializeValue(ref nodeNumber);
-            serializer.SerializeValue(ref nodeName);
-            serializer.SerializeValue(ref nodeColor);
-        }
-    }
-
-    
-    Nodes[] uniquNodes;
-    
+    CSVReader csvData;
     Transform[] childObjects;
     Node[] childNode;
     public List<Transform> childNodeList = new List<Transform>();
-    public SONodes[] soNodes;
+    //public SONodes[] soNodes;
+    
 
     private void Start()
     {
+        csvData = GetComponent<CSVReader>();
         CreateChildrenNodeList();
-        SetEachNodeData();
-        uniquNodes[0] = new Nodes { nodeNumber = 0 };
+        NetworkManager.Singleton.OnServerStarted += SetEachNodeData;
+        NetworkManager.Singleton.OnClientConnectedCallback += Redo; 
     }
 
     //This is for the editor view, so that we can see what path the totem is taking, can be romed later
@@ -64,9 +51,11 @@ public class Route : NetworkBehaviour
         }
         
     }
+    void Redo(ulong u) { SetEachNodeData(); }
+
 
     //Referencing each node to have its own properties
-    private void SetEachNodeData()
+    public void SetEachNodeData()
     {
         childNode = GetComponentsInChildren<Node>();
         for (int i = 0; i < childNode.Length; i++)

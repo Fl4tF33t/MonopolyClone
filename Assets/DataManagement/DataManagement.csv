@@ -1,0 +1,41 @@
+Node Number,Node Name,Is Purchasable,Node Buy Price,Node Sell Price,Is Owned,NodeColor,Node Type
+0,Go,FALSE,0,0,TRUE,lime,3
+1,Rauma,TRUE,3,2,FALSE,lightblue,6
+2,Community,FALSE,0,0,TRUE,fuchsia,2
+3,Kokkola,TRUE,3,2,FALSE,lightblue,6
+4,Taxes,FALSE,0,0,TRUE,maroon,4
+5,Helsinki Vantaa Airport ,TRUE,2,1,FALSE,olive,0
+6,Mikkeli,TRUE,4,3,FALSE,silver,6
+7,Chance,FALSE,0,0,TRUE,purple,1
+8,Hyvinkaa,TRUE,4,3,FALSE,silver,6
+9,Kouvola,TRUE,4,3,FALSE,silver,6
+10,Visiting Jail,FALSE,0,0,TRUE,lime,3
+11,Kotka,TRUE,5,4,FALSE,brown,6
+12,Helen Electricity,TRUE,1,1,FALSE,yellow,5
+13,Porvoo,TRUE,5,4,FALSE,brown,6
+14,Hameenlinna,TRUE,5,4,FALSE,brown,6
+15,Oulu Airport,TRUE,2,1,FALSE,olive,0
+16,Seinajoki,TRUE,6,5,FALSE,orange,6
+17,Community,FALSE,0,0,TRUE,fuchsia,2
+18,Rovaniemi,TRUE,6,5,FALSE,orange,6
+19,Lappeenranta,TRUE,6,5,FALSE,orange,6
+20,Free Parking,FALSE,0,0,TRUE,lime,3
+21,Vaasa,TRUE,7,6,FALSE,darkblue,6
+22,Chance,FALSE,0,0,TRUE,purple,1
+23,Joensuu,TRUE,7,6,FALSE,darkblue,6
+24,Pori,TRUE,7,6,FALSE,darkblue,6
+25,Rovaniemi Airport,TRUE,2,1,FALSE,olive,0
+26,Kuopio,TRUE,8,7,FALSE,black,6
+27,Lahti,TRUE,8,7,FALSE,black,6
+28,Fortum Electricity,TRUE,1,1,FALSE,yellow,5
+29,Jyvaskyla,TRUE,8,7,FALSE,black,6
+30,Go To Jail,FALSE,0,0,TRUE,lime,3
+31,Ouluu,TRUE,9,8,FALSE,white,6
+32,Turku,TRUE,9,8,FALSE,white,6
+33,Community,FALSE,0,0,TRUE,fuchsia,2
+34,Tampere,TRUE,9,8,FALSE,white,6
+35,Turku Airport,TRUE,2,1,FALSE,olive,0
+36,Chance,FALSE,0,0,TRUE,purple,1
+37,Espoo,TRUE,10,9,FALSE,cyan,6
+38,Taxes,FALSE,0,0,TRUE,maroon,4
+39,Helsinki,TRUE,10,9,FALSE,cyan,6

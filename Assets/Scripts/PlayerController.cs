@@ -19,16 +19,17 @@ public class PlayerController : NetworkBehaviour
     public event Action<int> OnDiceRoll;
     //public event Action<int> OnDiceRoll;
 
-    public Node currentNode;
+    public CSVReader.NodeData currentNode;
 
     // Start is called before the first frame update
     void Start()
     {
         totem = GetComponent<Totem>();
-        totem.OnEndOfMove += EndOfMove;
+        //totem.OnEndOfMove += EndOfMove;
         route = GameObject.Find("Route").GetComponent<Route>();
         networkObject = GetComponent<NetworkObject>();
         UIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+        totem.OnEndOfMove += TestServerRpc;
 
     }
 
@@ -53,7 +54,7 @@ public class PlayerController : NetworkBehaviour
     }
 
     //option's after move
-    void EndOfMove()
+    /*void EndOfMove()
     {
         currentNode = route.childNodeList[totem.routePosition].gameObject.GetComponent<Node>();
         SONodes currentSONode = currentNode.currentNode;
@@ -66,5 +67,12 @@ public class PlayerController : NetworkBehaviour
             UIManager.buySellButtonText.text = "Sell";
 
         }
+    }*/
+
+    [ServerRpc]
+    void TestServerRpc()
+    {
+        currentNode = route.childNodeList[totem.routePosition].gameObject.GetComponent<Node>().nodeData;
+        UIManager.testText.text = currentNode.nodeColor;
     }
 }
