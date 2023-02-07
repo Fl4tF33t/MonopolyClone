@@ -7,6 +7,7 @@ using System;
 public class Totem : NetworkBehaviour
 {
     //This script is used to ONLY control the rpc movement of the visual totem
+    //Dont change script unless you have to, everything works fine here with the host and client as long as the route.childnodelist has been created
 
     Route route;
     PlayerController playerController;

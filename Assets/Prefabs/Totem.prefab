@@ -391,4 +391,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTurn: 1
-  currentNode: {fileID: 0}

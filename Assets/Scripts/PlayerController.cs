@@ -19,13 +19,13 @@ public class PlayerController : NetworkBehaviour
     public event Action<int> OnDiceRoll;
     //public event Action<int> OnDiceRoll;
 
-    public CSVReader.NodeData currentNode;
+    //public CSVReader.NodeData currentNode;
 
     // Start is called before the first frame update
     void Start()
     {
         totem = GetComponent<Totem>();
-        totem.OnEndOfMove += EndOfMove;
+        //totem.OnEndOfMove += EndOfMove;
         route = GameObject.Find("Route").GetComponent<Route>();
         networkObject = GetComponent<NetworkObject>();
         UIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
@@ -54,7 +54,7 @@ public class PlayerController : NetworkBehaviour
     }
 
     //option's after move
-    void EndOfMove()
+    /*void EndOfMove()
     {
         currentNode = route.childNodeList[totem.routePosition].gameObject.GetComponent<Node>().currentNodeData.Value;
         if(currentNode.isOwned == false)
@@ -74,4 +74,6 @@ public class PlayerController : NetworkBehaviour
         currentNode = route.childNodeList[totem.routePosition].gameObject.GetComponent<Node>().currentNodeData;
         UIManager.testText.text = currentNode.nodeColor;
     }*/
+
+    
 }
