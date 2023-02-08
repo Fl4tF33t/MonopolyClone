@@ -21,8 +21,12 @@ public class Route : NetworkBehaviour
     }
     private void Start()
     {
-        CreateChildrenNodeListData();
-        //NetworkManager.Singleton.OnServerStarted += Test;
+        //CreateChildrenNodeListData();
+        if (IsServer)
+        {
+            NetworkManager.Singleton.OnServerStarted += Test;
+        }
+        else CreateChildrenNodeListData();    
     }
 
     //This is for the editor view, so that we can see what path the totem is taking, can be remomed later
@@ -106,7 +110,8 @@ public class Route : NetworkBehaviour
                 {
                     if (node.currentNodeNumber == networkStruct.nodeDataArray[x].nodeNumber)
                     {
-                        node.currentNodeData.Value = new TestStruct.NetworkNodeData { nodeNumber = networkStruct.nodeDataArray[x].nodeNumber, nodeName = networkStruct.nodeDataArray[x].nodeName };
+                        node.currentNodeData.Value = new TestStruct.NetworkNodeData { nodeNumber = networkStruct.nodeDataArray[x].nodeNumber, nodeName = networkStruct.nodeDataArray[x].nodeName, isPurchasable = networkStruct.nodeDataArray[x].isPurchasable,
+                        nodeBuyPrice = networkStruct.nodeDataArray[x].nodeBuyPrice, nodeSellPrice = networkStruct.nodeDataArray[x].nodeSellPrice, isOwned = networkStruct.nodeDataArray[x].isOwned, nodeColor = networkStruct.nodeDataArray[x].nodeColor, nodeType = networkStruct.nodeDataArray[x].nodeType};
                     }
                 }
 
