@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 using System;
+using UnityEngine.Events;
 
 public class TestStruct : NetworkBehaviour
 {
     public TextAsset csvFile;
     public NetworkNodeData[] nodeDataArray;
+
+    public UnityEvent finishedEvent;
 
     public enum NodeType { Corner, City, Community, Taxes, Airport, Chance, Utility }
 
@@ -56,7 +59,9 @@ public class TestStruct : NetworkBehaviour
             nodeDataArray[i].nodeColor = (data[columns * (i + 1) + 6]);
             nodeDataArray[i].nodeType = (NodeType)Enum.Parse(typeof(NodeType), data[columns * (i + 1) + 7]);
         }
-       // OnNodeDataFinishBuild?.Invoke();
+        // OnNodeDataFinishBuild?.Invoke();
+
+        finishedEvent.Invoke();
     }
 
     public NetworkVariable<NetworkNodeData> nodedata = new NetworkVariable<NetworkNodeData>();
