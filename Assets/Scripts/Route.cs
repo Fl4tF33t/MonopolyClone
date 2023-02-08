@@ -8,6 +8,7 @@ public class Route : NetworkBehaviour
     //this script is used to set the route path of the nodes, here we can call the nodes to set their data
 
     CSVReader csvReader;
+    TestStruct networkStruct;
     Transform[] childObjects;
 
     public List<Transform> childNodeList = new List<Transform>();
@@ -15,11 +16,13 @@ public class Route : NetworkBehaviour
     private void Awake()
     {
         csvReader = GetComponent<CSVReader>();
+        networkStruct = GetComponent<TestStruct>();
         //csvReader.OnNodeDataFinishBuild += CreateChildrenNodeListData;
     }
     private void Start()
     {
         CreateChildrenNodeListData();
+        //NetworkManager.Singleton.OnServerStarted += Test;
     }
 
     //This is for the editor view, so that we can see what path the totem is taking, can be remomed later
@@ -59,6 +62,57 @@ public class Route : NetworkBehaviour
                 nodeNumber++;
             }        
         }
+        /*for (int i = 0; i < childNodeList.Count; i++)
+        {
+            Node node = childNodeList[i].GetComponent<Node>();
+            for (int x = 0; x < networkStruct.nodeDataArray.Length; x++)
+            {
+                if(node.currentNodeNumber == networkStruct.nodeDataArray[x].nodeNumber)
+                {
+                    node.currentNodeData.Value = new TestStruct.NetworkNodeData {nodeNumber = networkStruct.nodeDataArray[x].nodeNumber, nodeName = networkStruct.nodeDataArray[x].nodeName };
+                }
+            }
+
+        }*/
+    }
+    
+    //adds the transform of each child object to a public childNodeList, this is done because GetComponentsInChildren add the parent to the array at index 0
+    private void Test()
+    {
+        //Create a public list of all the children
+        childNodeList.Clear();
+        childObjects = GetComponentsInChildren<Transform>();
+        int nodeNumber = 0;
+
+        //sets the nodedata for each child
+        foreach (Transform child in childObjects)
+        {
+            if (child != this.transform)
+            {
+                childNodeList.Add(child);
+
+                Node node = child.GetComponent<Node>();
+                node.currentNodeNumber = nodeNumber;
+                //node.SettingCurrentNode();
+                nodeNumber++;
+            }
+        }
+        if (IsServer)
+        {
+            for (int i = 0; i < childNodeList.Count; i++)
+            {
+                Node node = childNodeList[i].GetComponent<Node>();
+                for (int x = 0; x < networkStruct.nodeDataArray.Length; x++)
+                {
+                    if (node.currentNodeNumber == networkStruct.nodeDataArray[x].nodeNumber)
+                    {
+                        node.currentNodeData.Value = new TestStruct.NetworkNodeData { nodeNumber = networkStruct.nodeDataArray[x].nodeNumber, nodeName = networkStruct.nodeDataArray[x].nodeName };
+                    }
+                }
+
+            }
+        }
+        
     }
 
     /*public struct NetworkNodeData : INetworkSerializable

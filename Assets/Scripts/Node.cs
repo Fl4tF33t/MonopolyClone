@@ -22,12 +22,13 @@ public class Node : NetworkBehaviour
     private void Awake()
     {
         csvReader = GetComponentInParent<CSVReader>();
-        //csvReader.OnNodeDataFinishBuild += SettingCurrentNode;
         route = GetComponentInParent<Route>();
     }
     void Start()
     {
         ren = GetComponent<Renderer>();
+        //NetworkManager.Singleton.OnServerStarted += SettingCurrentNode;
+
     }
 
     //creating private list of SO to node position  
@@ -38,11 +39,18 @@ public class Node : NetworkBehaviour
             if(nodeData.nodeNumber == currentNodeNumber)
             {
                 //currentNodeData.Value = new Route.NetworkNodeData {nodeName = "hi"};
-                currentNodeData.Value = new TestStruct.NetworkNodeData { nodeName = nodeData.nodeName };
-                return;
+                //currentNodeData.Value = new TestStruct.NetworkNodeData { nodeName = nodeData.nodeName };4
+                currentNodeData.Value = new TestStruct.NetworkNodeData {};
+                //SetDataServerRpc(currentNodeData);
             }
         }
     }
+
+    //[ServerRpc]
+    /*void SetDataServerRpc(TestStruct.NetworkNodeData curNode)
+    {
+        this.currentNodeData.Value = curNode;
+    }*/
 
     public void SettingNodeData()
     {
@@ -51,7 +59,7 @@ public class Node : NetworkBehaviour
              networkColor.Value = color;
              ren.material.color = networkColor.Value;
          }*/
-        return;
+        //return;
     }
 
     // Update is called once per frame
